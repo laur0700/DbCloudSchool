@@ -1,29 +1,27 @@
 package tema1;
 
 public class Bus extends Vehicle {
-    private boolean noPassengers;
+    private int noPassengers;
     private float ticketPrice;
-    private int chargeCount = 15;
 
     public Bus(){
     }
 
-    public Bus(boolean noPassengers, float ticketPrice){
+    public Bus(int noPassengers, float ticketPrice, String colour, boolean functional){
         this.noPassengers = noPassengers;
         this.ticketPrice = ticketPrice;
-
-        if(noPassengers == true)
-            this.chargeCount = 0;
+        this.setColour(colour);
+        this.setFunctional(functional);
     }
 
     @Override
     public void charge() {
-        chargeCount++;
+        noPassengers++;
     }
 
     @Override
     public float profit() {
-        return (ticketPrice * chargeCount) / 4;
+        return (ticketPrice * noPassengers) / 4;
     }
 
     @Override
@@ -36,7 +34,8 @@ public class Bus extends Vehicle {
         return "Bus{" +
                 "noPassengers=" + noPassengers +
                 ", ticketPrice=" + ticketPrice +
-                ", chargeCount=" + chargeCount +
+                ", colour=" + getColour() +
+                ", functional=" + getFunctional() +
                 '}';
     }
 }
